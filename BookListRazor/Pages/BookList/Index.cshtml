@@ -25,6 +25,9 @@
                             @*@Html.DisplayNameFor(m => m.Books.FirstOrDefault().Author)*@
                             <label asp-for="Books.FirstOrDefault().Author"></label>
                         </th>
+                        <th>
+                            <label asp-for="Books.FirstOrDefault().ISBN"></label>
+                        </th>
                         <th></th>
                     </tr>
                     @foreach (var book in Model.Books)
@@ -37,8 +40,15 @@
                                 @Html.DisplayFor(m => book.Author)
                             </td>
                             <td>
-                                <button class="btn btn-danger btn-sm">Delete</button>
-                                <a class="btn btn-success btn-sm text-white">Edit</a>
+                                @Html.DisplayFor(m => book.ISBN)
+                            </td>
+                            <td>
+                                <button asp-page-handler="Delete" asp-route-id="@book.Id"
+                                        onclick="return confirm('Are you sure you want to delete?')"
+                                        class="btn btn-danger btn-sm">
+                                    Delete
+                                </button>
+                                <a asp-page="Edit" asp-route-id="@book.Id" class="btn btn-success btn-sm text-white">Edit</a>
                             </td>
 
                         </tr>
