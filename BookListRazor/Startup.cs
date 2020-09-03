@@ -24,6 +24,8 @@ namespace BookListRazor
             {
                 option.UseSqlServer(Configuration.GetConnectionString("SqlDockerConnection"));
             });
+
+            services.AddControllersWithViews();
             services.AddRazorPages().AddRazorRuntimeCompilation();
         }
 
@@ -50,6 +52,7 @@ namespace BookListRazor
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllers();
                 endpoints.MapRazorPages();
             });
         }
